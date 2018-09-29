@@ -1,0 +1,18 @@
+{
+    "dataRoles": [
+        {
+            "displayName": "Utility",
+            "name": "utility",
+            "kind": "GroupingOrMeasure"
+        }
+    ],
+    "dataViewMappings": [
+        {
+            "table": {
+                "rows": {
+                    "for": {"in": "utility"}
+                }
+            }
+        }
+    ]
+}
