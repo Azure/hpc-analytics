@@ -1,0 +1,177 @@
+{
+    "name": "HpcVisualizationDataset4",
+    "defaultMode": "Push",
+    "tables": [
+        {
+            "name": "JobInfo",
+            "columns": [
+                {
+                    "name": "JobId",
+                    "dataType": "Int64"
+                },
+                {
+                    "name": "User",
+                    "dataType": "string"
+                },
+                {
+                    "name": "SubmitDate",
+                    "dataType": "DateTime"
+                },
+                {
+                    "name": "SubmitTime",
+                    "dataType": "Int64"
+                },
+                {
+                    "name": "RequeueCount",
+                    "dataType": "Int64"
+                },
+                {
+                    "name": "WaitingTime",
+                    "dataType": "Double"
+                },
+                {
+                    "name": "RunningTime",
+                    "dataType": "Double"
+                }
+            ]
+        },
+        {
+            "name": "JobCost",
+            "columns": [
+                {
+                    "name": "JobId",
+                    "dataType": "Int64"
+                },
+                {
+                    "name": "TimeMs",
+                    "dataType": "Int64"
+                },
+                {
+                    "name": "CoresPrev",
+                    "dataType": "Int64"
+                },
+                {
+                    "name": "CoresCurr",
+                    "dataType": "Int64"
+                },
+                {
+                    "name": "PricePrev",
+                    "dataType": "Double"
+                },
+                {
+                    "name": "PriceCurr",
+                    "dataType": "Double"
+                }
+            ]
+        },
+        {
+            "name": "TaskBill",
+            "columns": [
+                {
+                    "name": "JobId",
+                    "dataType": "Int64"
+                },
+                {
+                    "name": "TaskId",
+                    "dataType": "Int64"
+                },
+                {
+                    "name": "RequeueCount",
+                    "dataType": "Int64"
+                },
+                {
+                    "name": "Effected",
+                    "dataType": "Double"
+                },
+                {
+                    "name": "Wasted",
+                    "dataType": "Double"
+                }
+            ]
+        },
+        {
+            "name": "NodeAllocation",
+            "columns": [
+                {
+                    "name": "NodeId",
+                    "dataType": "Int64"
+                },
+                {
+                    "name": "NodeSize",
+                    "dataType": "Int64"
+                },
+                {
+                    "name": "CoreId",
+                    "dataType": "Int64"
+                },
+                {
+                    "name": "JobId",
+                    "dataType": "Int64"
+                },
+                {
+                    "name": "StartTimeMs",
+                    "dataType": "Int64"
+                },
+                {
+                    "name": "EndTimeMs",
+                    "dataType": "Int64"
+                },
+                {
+                    "name": "Time",
+                    "dataType": "DateTime"
+                }
+            ]
+        },
+        {
+            "name": "ClusterUtility",
+            "columns": [
+                {
+                    "name": "Time",
+                    "dataType": "DateTime"
+                },
+                {
+                    "name": "Capacity",
+                    "dataType": "Double"
+                }, 
+                {
+                    "name": "Usage",
+                    "dataType": "Double"
+                },
+                {
+                    "name": "Utility",
+                    "dataType": "Double"
+                }
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "name": "NodeAllocation2JobInfo",
+            "fromTable": "NodeAllocation",
+            "fromColumn": "JobId",
+            "toTable": "JobInfo",
+            "toColumn": "JobId"
+        },
+        {
+            "name": "TaskBill2JobInfo",
+            "fromTable": "TaskBill",
+            "fromColumn": "JobId",
+            "toTable": "JobInfo",
+            "toColumn": "JobId"
+        },
+        {
+            "name": "JobCost2JobInfo",
+            "fromTable": "JobCost",
+            "fromColumn": "JobId",
+            "toTable": "JobInfo",
+            "toColumn": "JobId"
+        },
+        {
+            "name": "NodeAllocation2ClusterUtility",
+            "fromTable": "NodeAllocation",
+            "fromColumn": "Time",
+            "toTable": "ClusterUtility",
+            "toColumn": "Time"
+        }
+    ]
+}
